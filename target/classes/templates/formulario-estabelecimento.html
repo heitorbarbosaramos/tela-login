@@ -1,0 +1,135 @@
+<form id="form-new-estabelecimento" autocomplete="off">
+
+	<input type="hidden" id="idEstabelecimento" th:value="${idEstabelecimento}">
+
+	<div class="row">
+
+		<div class="form-group col-lg-6">
+			<small class="form-text text-muted" for="nomeProprietario">Nome Proprietário</small>
+			<input type="text" name="nomeProprietario" class="form-control" id="nomeProprietario" required="required" placeholder="" th:value="${nomeProprietario}">
+		</div>
+
+		<div class="form-group col-lg-6">
+			<small class="form-text text-muted" for="nomeFantasia">Nome Fantasia</small>
+			<input type="text" name="nomeFantasia" class="form-control" id="nomeFantasia" required="required" placeholder="" th:value="${nomeFantasia}">
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="form-group col-lg-3">
+			<small class="form-text text-muted" for="cnpj">CNPJ</small>
+			<input type="text" name="cnpj" class="form-control" id="cnpj" placeholder="" th:value="${cnpj}">
+		</div>
+
+		<div class="form-group col-lg-3">
+			<small class="form-text text-muted" for="cpf">CPF</small>
+			<input type="text" name="cpf" class="form-control" id="cpf" placeholder="" th:value="${cpf}">
+		</div>
+
+		<div class="form-group col-lg-3">
+			<small class="form-text text-muted" for="email">EMAIL</small>
+			<input type="email" name="email" class="form-control" id="email" placeholder="" th:value="${email}">
+		</div>
+
+		<div class="form-group col-lg-3">
+			<small class="form-text text-muted" for="telefone">Telefone</small>
+			<input type="text" name="telefone" class="form-control" id="telefone" placeholder="" th:value="${telefone}">
+		</div>
+
+	</div>
+
+	<div class="form-group col-lg-12">
+		<div class="row">
+
+			<div class="form-group col-lg-1">
+				<div id="spinnerCep" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+			</div>
+
+			<div class="form-group col-lg-11">
+				<div id="statusCep" role="status"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="row">
+
+		<div class="form-group col-lg-3">
+			<small class="form-text text-muted" for="cep" >CEP</small>
+			<input type="text" name="cep" class="form-control" id="cep" th:value="${cep}" placeholder="">
+		</div>
+
+		<div class="form-group col-lg-9">
+			<small class="form-text text-muted" for="cep" >Logradouro</small>
+			<input type="text" name="logradouro" class="form-control" id="logradouro" th:value="${logradouro}" placeholder="">
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="form-group col-lg-3">
+			<small class="form-text text-muted" for="complemento" >Complemento</small>
+			<input type="text" name="complemento" class="form-control" id="complemento"  th:value="${complemento}" placeholder="">
+		</div>
+
+		<div class="form-group col-lg-4">
+			<small class="form-text text-muted" for="bairro" >Bairro</small>
+			<input type="text" name="bairro" class="form-control" id="bairro"  th:value="${bairro}" placeholder="">
+		</div>
+
+		<div class="form-group col-lg-5">
+			<small class="form-text text-muted" for="localidade" >Municipio</small>
+			<input type="text" name="localidade" class="form-control" id="localidade"  th:value="${localidade}" placeholder="">
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="form-group col-lg-2">
+			<small class="form-text text-muted" for="numero" >numero</small>
+			<input type="text" name="numero" class="form-control" id="numero"  th:value="${numero}" placeholder="">
+		</div>
+
+		<div class="form-group col-lg-2">
+			<small class="form-text text-muted" for="uf" >UF</small>
+			<input type="text" name="uf" class="form-control" id="uf"  th:value="${uf}" placeholder="">
+		</div>
+
+		<div class="form-group col-lg-2">
+			<small class="form-text text-muted" for="principal" >Status loja</small>
+			<select class="form-select" aria-label="Default select example" id="statusEstabelecimento">
+				<option th:value="${principal}" th:text="${principal}" required></option>
+				<option th:each="status : ${status}" th:value="${status}" th:text="${status}"></option>
+
+			</select>
+		</div>
+
+		<div class="form-group col-lg-3">
+			<small class="form-text text-muted" for="botaoSalvar" >Salvar</small>
+			<button class="btn btn-primary" id="botaoSalvar" type="submit" >
+				<span id="spinerSalvar" role="status" aria-hidden="true"> </span>
+				<i class="fas fa-plus-circle"></i>
+			</button>
+		</div>
+
+
+
+
+
+
+
+	</div>
+
+
+
+
+
+
+
+</form>

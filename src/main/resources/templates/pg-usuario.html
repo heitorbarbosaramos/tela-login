@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<div class="corpo" layout:fragment="corpo">
+
+    <body class="sb-nav-fixed">
+
+    <!-- MENU TOPO-->
+    <div th:insert="topo.html" sec:authorize="isAuthenticated()" >...</div>
+
+    <div id="layoutSidenav">
+
+        <!-- MENU TOPO-->
+        <div th:insert="menuLateral.html" sec:authorize="isAuthenticated()" >...</div>
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Usuarios</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Usuarios</li>
+                    </ol>
+                     <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-users"></i>
+                            CENTRAL USUÁRIO
+                        </div>
+                        <div class="card-body">
+
+                            <p>
+
+                                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#adcionar-usuario" aria-expanded="false" aria-controls="collapseExample">
+                                    <i class="fas fa-user-plus"></i> Novo Usuario
+                                </button>
+                            </p>
+                            <p>
+                            <div class="collapse" id="adcionar-usuario">
+                                <div class="card card-body">
+
+                                    <div th:insert="formulario-usuario.html" sec:authorize="isAuthenticated()" >...</div>
+
+                                </div>
+                            </div>
+                            </p>
+
+
+                            <table id="tabela-todos-usuarios" class="display">
+                                <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Login</th>
+                                    <th>Status</th>
+                                    <th>Editar</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="usuario : ${usuarios}">
+                                    <td th:text="${usuario.nomeCompleto}"></td>
+                                    <td th:text="${usuario.login}"></td>
+                                    <td>
+                                        <div th:switch="${usuario.status}" th:title="${usuario.status}">
+                                            <p th:case="'Ativo'" class="btn btn-success"> <i class="fas fa-user-check"></i>  </p>
+                                            <p th:case="Desativado" class="btn btn-danger"> <i class="fas fa-user-times"></i> </p>
+                                            <p th:case="*" class="btn btn-warning"> <i class="fas fa-user-cog"></i></p>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a th:href="${'/usuario/edita/busca/' + usuario.id}">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-user-edit"></i>
+                                            </button>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+
+            <!-- FOOTER-->
+            <div th:insert="footer.html" sec:authorize="isAuthenticated()" >...</div>
+
+        </div>
+    </div>
+
+    </body>
+
+
+
+
+
+
+
+
+
+</div>
+
+<script th:src="@{/js/usuarios.js}" th:fragment="js"></script>
+</body>
+</html>

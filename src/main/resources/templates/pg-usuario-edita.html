@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<div class="corpo" layout:fragment="corpo">
+
+    <body class="sb-nav-fixed">
+
+    <!-- MENU TOPO-->
+    <div th:insert="topo.html" sec:authorize="isAuthenticated()" >...</div>
+
+    <div id="layoutSidenav">
+
+        <!-- MENU TOPO-->
+        <div th:insert="menuLateral.html" sec:authorize="isAuthenticated()" >...</div>
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Edita usuário</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Editan usuario</li>
+                    </ol>
+                     <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-user-edit"></i>
+                            Editar usuario
+                        </div>
+                        <div class="card-body">
+
+
+                            <div th:insert="formulario-usuario.html" sec:authorize="isAuthenticated()" >...</div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-user-edit"></i> <i class="fas fa-home"></i> <i class="fas fa-phone"></i>
+                            Contatos e endereco do usuario
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row">
+
+                                <div class="form-group col-lg-6">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <div class="alert alert-dark" role="alert">
+                                                <i class="fas fa-phone"></i> Contatos
+                                            </div>
+
+                                           <div th:each="contato : ${contatos}">
+                                               <div class="row">
+
+                                                   <div class="form-group col-lg-5">
+                                                        <small class="form-text text-muted" for="telefone">Telefone</small>
+                                                        <input type="text" name="telefone" class="form-control" th:value="${contato.telefone}" disabled placeholder="Telefone vazio">
+                                                   </div>
+
+
+                                                   <div class="form-group col-lg-5">
+                                                       <small class="form-text text-muted" for="email">Email</small>
+                                                       <input type="text" name="email" class="form-control" th:value="${contato.email}" disabled placeholder="Email vazio">
+                                                   </div>
+
+                                                   <div class="form-group col-lg-1">
+                                                       <small class="form-text text-muted" for="botaoSalvar" >.</small>
+                                                       <div>
+                                                           <button class="btn btn-danger" th:id="${'removerContato-' + contato.id}">
+                                                               <span th:id="${'spinerContato-' + contato.id}" role="status" aria-hidden="true"> </span>
+                                                               <i class="fas fa-times-circle"></i>
+                                                           </button>
+                                                       </div>
+                                                   </div>
+
+                                               </div>
+
+                                               <hr/>
+
+                                           </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-6">
+                                    <div class="card mb-4">
+                                        <div class="card-body">
+                                            <div class="alert alert-dark" role="alert">
+                                                <i class="fas fa-home"></i>   Endereço
+                                            </div>
+
+                                            <div th:each="endereco : ${enderecos}" class="card mb-4 card-body">
+
+                                                <div class="row">
+
+                                                    <div class="form-group col-lg-4">
+                                                        <small class="form-text text-muted" for="cep" >CEP</small>
+                                                        <input type="text" name="cep" class="form-control" th:value="${endereco.cep}" disabled placeholder="">
+                                                    </div>
+
+                                                    <div class="form-group col-lg-8">
+                                                        <small class="form-text text-muted" for="cep" >Logradouro</small>
+                                                        <input type="text" name="logradouro" class="form-control" th:value="${endereco.logradouro}" disabled placeholder="">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+
+                                                    <div class="form-group col-lg-5">
+                                                        <small class="form-text text-muted" for="complemento" >Complemento</small>
+                                                        <input type="text" name="complemento" class="form-control" th:value="${endereco.complemento}" disabled placeholder="">
+                                                    </div>
+
+                                                    <div class="form-group col-lg-7">
+                                                        <small class="form-text text-muted" for="bairro" >Bairro</small>
+                                                        <input type="text" name="bairro" class="form-control" th:value="${endereco.bairro}" disabled placeholder="">
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row">
+
+                                                    <div class="form-group col-lg-8">
+                                                        <small class="form-text text-muted" for="localidade" >Municipio</small>
+                                                        <input type="text" name="localidade" class="form-control" th:value="${endereco.localidade}" disabled placeholder="">
+                                                    </div>
+
+                                                    <div class="form-group col-lg-4">
+                                                        <small class="form-text text-muted" for="numero" >numero</small>
+                                                        <input type="text" name="numero" class="form-control" th:value="${endereco.numero}" disabled placeholder="">
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+
+                                                    <div class="form-group col-lg-3">
+                                                        <small class="form-text text-muted" for="uf" >UF</small>
+                                                        <input type="text" name="uf" class="form-control" th:value="${endereco.uf}" disabled placeholder="">
+                                                    </div>
+
+
+                                                    <div class="form-group col-lg-3">
+                                                        <small class="form-text text-muted" for="botaoSalvar" >.</small>
+                                                        <div>
+                                                            <button class="btn btn-danger" th:id="${'botaoRemoverEndereco-' + endereco.id}">
+                                                                <span  th:id="${'botaoRemoverEnderecoSpinner-' + endereco.id}" role="status" aria-hidden="true"> </span>
+                                                                <i class="fas fa-times-circle"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                </hr>
+
+                                            </div>
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+
+            <!-- FOOTER-->
+            <div th:insert="footer.html" sec:authorize="isAuthenticated()" >...</div>
+
+        </div>
+    </div>
+
+    </body>
+
+
+
+
+
+
+
+
+
+</div>
+
+<script th:src="@{/js/editar-usuario.js}" th:fragment="js"></script>
+</body>
+</html>

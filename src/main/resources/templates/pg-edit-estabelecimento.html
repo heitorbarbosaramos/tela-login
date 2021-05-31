@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<div class="corpo" layout:fragment="corpo">
+
+    <body class="sb-nav-fixed">
+
+    <!-- MENU TOPO-->
+    <div th:insert="topo.html" sec:authorize="isAuthenticated()" >...</div>
+
+    <div id="layoutSidenav">
+
+        <!-- MENU TOPO-->
+        <div th:insert="menuLateral.html" sec:authorize="isAuthenticated()" >...</div>
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Editar</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Editar</li>
+                    </ol>
+                     <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Editar Estabelecimento
+                        </div>
+                        <div class="card-body">
+
+                            <div th:insert="formulario-estabelecimento.html" sec:authorize="isAuthenticated()" >...</div>
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+
+            <!-- FOOTER-->
+            <div th:insert="footer.html" sec:authorize="isAuthenticated()" >...</div>
+
+        </div>
+    </div>
+
+    </body>
+
+
+
+
+
+
+
+
+
+</div>
+
+<script th:src="@{/js/formulario-estabelecimento.js}" th:fragment="js"></script>
+<script th:src="@{/js/edit-estabelecimento.js}" th:fragment="js"></script>
+</body>
+</html>

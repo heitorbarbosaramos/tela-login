@@ -1,0 +1,207 @@
+<form id="form-new-usuario" autocomplete="off">
+
+	<input type="hidden" id="idUsuario" th:value="${idUsuario}">
+
+	<div class="row">
+
+		<div class="form-group col-lg-4">
+			<small class="form-text text-muted" for="nomeCompleto">Nome Completo</small>
+			<input type="text" name="nomeCompleto" class="form-control" id="nomeCompleto" required="required" placeholder="" th:value="${nomeCompleto}">
+		</div>
+
+		<div class="form-group col-lg-4">
+			<small class="form-text text-muted" for="login">Login - usar email</small>
+			<input type="email" name="login" class="form-control" id="login" required="required" placeholder="" th:value="${login}">
+			<input type="hidden" id="loginCompara" th:value="${login}">
+		</div>
+
+		<div class="form-group col-lg-4">
+			<small class="form-text text-muted" for="senha">Senha</small>
+			<input type="password" name="senha" class="form-control" id="senha" required="required" placeholder="" >
+		</div>
+
+	</div>
+
+	<div class="row">
+
+		<div class="form-group col-lg-2">
+			<small class="form-text text-muted" for="login">Nivel de acesso</small>
+			<div th:each="role : ${roles}">
+
+				<div class="form-group">
+					<input type="checkbox" th:nome="${'roleUsuario-' + role.descricao}" th:value="${'roleUsuario-' + role.nomeRole}" th:id="${'roleUsuario-' + role.descricao}"  th:text="${' ' + role.descricao}">
+				</div>
+
+			</div>
+		</div>
+
+		<div class="form-group col-lg-2">
+			<small class="form-text text-muted" for="login">Status</small>
+			<div th:each="statu : ${status}">
+				<input type="radio" name="status" id="status" th:value="${statu.descricao}"  th:text="${' ' + statu.descricao}" required >
+			</div>
+		</div>
+
+		<div class="form-group col-lg-8">
+			<small class="form-text text-muted" for="login">Adcionar contato e endereço</small>
+			<!-- ADICIONAR CONTATOS -->
+			<div class="accordion" id="accordionPanelsStayOpenExample">
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="panelsStayOpen-headingOne">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+							<i class="fas fa-phone"></i>  Adcionar  Contatos
+						</button>
+					</h2>
+					<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+						<div class="accordion-body">
+
+							<div class="row">
+
+								<div class="form-group col-lg-6">
+									<small class="form-text text-muted" for="telefone">Telefone</small>
+									<input type="text" name="telefone" class="form-control" id="telefone" placeholder="">
+								</div>
+
+								<div class="form-group col-lg-6">
+									<small class="form-text text-muted" for="email">Email</small>
+									<input type="email" name="email" class="form-control" id="email" placeholder="">
+								</div>
+
+							</div>
+
+							<div class="form-group col-lg-3" th:if="${editar == 'editar'}">
+								<small class="form-text text-muted" for="botaoSalvarNovoContato" >Adcionar Contato</small>
+								<div>
+									<div class="btn btn-primary" id="botaoSalvarNovoContato">
+										<span id="spinerNovoContato" role="status" aria-hidden="true"> </span>
+										<i class="fas fa-plus-circle"></i> <i class="fas fa-phone"></i>
+									</div>
+								</div>
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+				<!-- FIM ADICIONAR CONTATOS -->
+				<!-- ADCIONAR ENDERECO -->
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+							<i class="fas fa-home"></i> Adcionar endereço
+						</button>
+					</h2>
+					<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+						<div class="accordion-body">
+
+							<div class="form-group col-lg-12">
+								<div class="row">
+
+									<div class="form-group col-lg-1">
+										<div id="spinnerCep" role="status">
+											<span class="sr-only">Loading...</span>
+										</div>
+									</div>
+
+									<div class="form-group col-lg-11">
+										<div id="statusCep" role="status"></div>
+									</div>
+
+								</div>
+							</div>
+
+							<div class="row">
+
+								<div class="form-group col-lg-3">
+									<small class="form-text text-muted" for="cep" >CEP</small>
+									<input type="text" name="cep" class="form-control" id="cep" placeholder="">
+								</div>
+
+								<div class="form-group col-lg-9">
+									<small class="form-text text-muted" for="cep" >Logradouro</small>
+									<input type="text" name="logradouro" class="form-control" id="logradouro" placeholder="">
+								</div>
+
+							</div>
+
+							<div class="row">
+
+								<div class="form-group col-lg-3">
+									<small class="form-text text-muted" for="complemento" >Complemento</small>
+									<input type="text" name="complemento" class="form-control" id="complemento" placeholder="">
+								</div>
+
+								<div class="form-group col-lg-4">
+									<small class="form-text text-muted" for="bairro" >Bairro</small>
+									<input type="text" name="bairro" class="form-control" id="bairro" placeholder="">
+								</div>
+
+								<div class="form-group col-lg-5">
+									<small class="form-text text-muted" for="localidade" >Municipio</small>
+									<input type="text" name="localidade" class="form-control" id="localidade" placeholder="">
+								</div>
+
+							</div>
+
+							<div class="row">
+
+								<div class="form-group col-lg-2">
+									<small class="form-text text-muted" for="numero" >numero</small>
+									<input type="text" name="numero" class="form-control" id="numero" placeholder="">
+								</div>
+
+								<div class="form-group col-lg-2">
+									<small class="form-text text-muted" for="uf" >UF</small>
+									<input type="text" name="uf" class="form-control" id="uf" placeholder="">
+								</div>
+
+								<div class="form-group col-lg-3" th:if="${editar == 'editar'}">
+									<small class="form-text text-muted" for="botaoSalvar" >Adcionar Endereço</small>
+									<div>
+										<div class="btn btn-primary" id="botaoSalvarNovoEndereco">
+											<span id="spinerAddEndereco" role="status" aria-hidden="true"> </span>
+											<i class="fas fa-plus-circle"></i> <i class="fas fa-home"></i>
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+
+
+						</div>
+					</div>
+				</div>
+
+				<!-- FIM ADCIONAR ENDERECO -->
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<div class="row">
+
+		<div class="form-group col-lg-3" th:if="${editar != 'editar'}">
+			<small class="form-text text-muted" for="botaoSalvar" >Salvar</small>
+			<div>
+
+				<button class="btn btn-primary" id="botaoSalvar" type="submit" >
+					<span id="spinerSalvar" role="status" aria-hidden="true"> </span>
+					<i class="fas fa-plus-circle"></i>
+				</button>
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+
+
+
+</form>

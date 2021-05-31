@@ -1,0 +1,31 @@
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+
+                <div sec:authorize="hasRole('ADMIN')">
+                    <div th:insert="/menu-admin.html"></div>
+                </div>
+
+
+                <div sec:authorize="hasRole('GERENTE')">
+                    <div th:insert="/menu-gerente.html"></div>
+                </div>
+
+                <div sec:authorize="hasRole('CAIXA')">
+                    <div th:insert="/menu-caixa.html"></div>
+                </div>
+
+                <div sec:authorize="hasRole('ATENDENTE')">
+                    <div th:insert="/menu-atendente.html"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logado: </div>
+            <div sec:authentication="name"></div>
+        </div>
+    </nav>
+</div>
+

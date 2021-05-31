@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<div class="corpo" layout:fragment="corpo">
+
+    <body class="sb-nav-fixed">
+
+    <!-- MENU TOPO-->
+    <div th:insert="topo.html" sec:authorize="isAuthenticated()" >...</div>
+
+    <div id="layoutSidenav">
+
+        <!-- MENU TOPO-->
+        <div th:insert="menuLateral.html" sec:authorize="isAuthenticated()" >...</div>
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Dashboard</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                     <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            CENTRAL
+                        </div>
+                        <div class="card-body">
+                          CENTRAL
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+
+            <!-- FOOTER-->
+            <div th:insert="footer.html" sec:authorize="isAuthenticated()" >...</div>
+
+        </div>
+    </div>
+
+    </body>
+
+
+
+
+
+
+
+
+
+</div>
+
+<script th:src="@{/js/central.js}" th:fragment="js"></script>
+</body>
+</html>

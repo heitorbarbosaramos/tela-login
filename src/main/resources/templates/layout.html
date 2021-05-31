@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Minha Tela</title>
+
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+
+    <!-- CSS TABELAS-->
+    <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="sb-nav-fixed">
+
+<!-- MODAL SUCESSO -->
+<div th:insert="modal-alerta-sucesso.html"  >...</div>
+
+<!-- CORPO SITE -->
+<main role="main" class="">
+    <div layout:fragment="corpo">
+        <div>conteudo principal das páginas</div>
+    </div>
+</main>
+
+
+</div>
+
+<div th:replace="footer::footer"></div>
+
+<!-- JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+
+<script th:src="@{/js/assets/scripts.js}"></script>
+<script th:src="@{/js/assets/datatables-simple-demo.js}"></script>
+
+<script th:src="@{/js/assets/modal-alerta-sucesso.js}"></script>
+
+<script th:src="@{/js/assets/demo/chart-area-demo.js}"></script>
+<script th:src="@{/js/assets/demo/chart-bar-demo.js}"></script>
+<script th:src="@{/js/assets/demo/chart-pie-demo.js}"></script>
+<!-- SPINER -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+<!-- JS TABELAS-->
+<script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+
+<!-- 	MEUS JS -->
+<script th:replace=":: js"></script>
+</body>
+</html>
+</html>
